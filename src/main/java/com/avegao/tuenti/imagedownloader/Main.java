@@ -1,7 +1,6 @@
-package com.xinjia.tuenti.imagedownloader;
+package com.avegao.tuenti.imagedownloader;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import javax.imageio.ImageIO;
