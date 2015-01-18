@@ -88,7 +88,7 @@ public class Main extends JFrame {
                 driver.navigate().refresh();
 
                 int numImages = Integer.parseInt(driver.findElement(By.xpath(
-                        "//a[@id=\"albumSelectorTrigger\"]/span")).getText().replace("(", "").replace(")", ""));
+                        "//a[@id=\"albumSelectorTrigger\"]/span")).getText().replace("(", "").replace(")", "").replace(".", ""));
 
                 driver.findElement(By.xpath("//ul[@id='albumBody']/li/a")).click();
 
@@ -102,6 +102,10 @@ public class Main extends JFrame {
                 System.out.println(numImages);
 
                 for (int i = 0; i < numImages; i++) {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (Exception e1) {}
+
                     urlImages.add(driver.findElement(By.id("photo_image")).getAttribute("src"));
 
                     System.out.println(i);
@@ -111,8 +115,6 @@ public class Main extends JFrame {
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
-
-
 
                     driver.findElement(By.id("photo_nav_next")).click();
                 }
@@ -155,8 +157,8 @@ public class Main extends JFrame {
             image = ImageIO.read(urlImage);
 
             if (image != null) {
-                File file = new File(downloadDir + "/" + number);
-                ImageIO.write(image, ".jpg", file);
+                File file = new File(downloadDir + "/" + number + ".jpg");
+                ImageIO.write(image, "JPG", file);
             }
 
         } catch (Exception e) {
